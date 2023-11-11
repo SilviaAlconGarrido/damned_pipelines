@@ -6,6 +6,7 @@ import json
 import math#operacion matematica
 import os
 from dotenv import load_dotenv 
+import argparse
 
 #TOKEN:
 load_dotenv('./.env')
@@ -110,6 +111,7 @@ def get_pulls(base_url, key, owner, repo, pulls, search, state, username, api_to
 def df_status(df_pulls, base_url, key, owner, repo, commits, username, api_token, field_list):
     df_pulls['student_name'] = df_pulls['title'].apply(student_name)
     df_pulls['lab_name'] = df_pulls['title'].apply(lab_name)
+    print(df_pulls)
     df_pulls['created_at'] = df_pulls['created_at'].apply(time_parser)
     df_pulls['updated_at'] = df_pulls['updated_at'].apply(time_parser)
     df_pulls['head.repo.pushed_at'] = df_pulls['head.repo.pushed_at'].apply(time_parser)
@@ -130,3 +132,6 @@ def create_csv(df_status, field_sort, field_name):
     df_csv.columns = field_name
     df_csv.to_csv('./data/labs_status.csv', index=False)
     return df_csv
+
+
+#Funcion para: bonus argparse advanced-mysql'
