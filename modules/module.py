@@ -135,3 +135,4 @@ def create_csv(df_status, field_sort, field_name):
 
 
 #Funcion para: bonus argparse advanced-mysql'
+#filtro del dataframe y create otro csv

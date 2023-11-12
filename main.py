@@ -76,7 +76,15 @@ field_name1 = ['Student Name',
     
 #Pipeline
 if __name__ == '__main__': #esto protege la pipeline para ejecutar main
-    DF_PULLS = module.get_pulls(BASE_URL, KEY, OWNER, REPO, PULLS, SEARCH, STATE, USERNAME, API_TOKEN, field_list1)
-    DF_STATUS = module.df_status(DF_PULLS, BASE_URL, KEY, OWNER, REPO, COMMITS, USERNAME, API_TOKEN, field_list2)
-    DF_CSV = module.create_csv(DF_STATUS, field_sort1, field_name1)
-    DF_CSV
+    if argument_parser().function == '':
+        DF_PULLS = module.get_pulls(BASE_URL, KEY, OWNER, REPO, PULLS, SEARCH, STATE, USERNAME, API_TOKEN, field_list1)
+        DF_STATUS = module.df_status(DF_PULLS, BASE_URL, KEY, OWNER, REPO, COMMITS, USERNAME, API_TOKEN, field_list2)
+        DF_CSV = module.create_csv(DF_STATUS, field_sort1, field_name1)
+        DF_CSV
+    elif argument_parser().function == '':
+            n1 = enter_number('Enter a number: ')
+            n2 = enter_number('Enter another number: ')
+            result = sum_function(n1, n2)
+    else:
+        result = 'FATAL ERROR...you need to select the correct method'
+    print(f'The result is => {result}')
